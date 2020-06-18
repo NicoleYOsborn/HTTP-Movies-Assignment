@@ -11,24 +11,29 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
   const [refresh, setRefresh] = useState(true)
 
-  useEffect(()=>{
-    if(refresh) {
-      getMovieList();
-    }
-  },[refresh])
+  // useEffect(()=>{
+  //   if(refresh) {
+  //     getMovieList();
+  //   }
+  // },[refresh])
 
-  const getMovieList = () => {
+  // const getMovieList = () => {
     axios
       .get("http://localhost:5000/api/movies")
-      .then(res => setMovieList(res.data))
+      .then(res => {
+        console.log(res.data)
+        setMovieList(res.data)
+        
+      })
+
       .catch(err => console.log(err.response))
-      .finally(()=> setRefresh(false));
-  };
+      // .finally(()=> setRefresh(false));
+  // };
 
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
   };
-
+  console.log('this is movie list', movieList)
   // useEffect(() => {
   //   getMovieList();
   // }, []);

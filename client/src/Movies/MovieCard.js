@@ -1,5 +1,5 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import axios from 'axios';
 
 const MovieCard = props => {
@@ -13,7 +13,9 @@ const MovieCard = props => {
     axios
     .delete(`http://localhost:5000/api/movies/${props.movie.id}`)
     // make a PUT request to edit the item
-    .then(res => {setRefresh(true)
+    .then(res => {
+      console.log(res)
+      setRefresh(true)
     // {
     //   props.setMovieList(res.data);
     //   push('/')

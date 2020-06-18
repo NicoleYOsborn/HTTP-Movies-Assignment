@@ -40,6 +40,7 @@ const UpdateMovie = props => {
         // make a PUT request to edit the item
         .then(res =>{
           props.setRefresh(true)
+          document.querySelector('form').reset()
           push(`/movies/${id}`)
         })
         .catch(err=>console.log(err))
