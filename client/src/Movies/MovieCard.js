@@ -1,10 +1,35 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 
 const MovieCard = props => {
+  const { push } = useHistory();
   const { title, director, metascore, stars } = props.movie;
+  // const { setMovieList} = props.setMovieList;
+  const { setRefresh } = props.setRefresh;
+
+  const handleDelete = e => {
+    e.preventDefault();
+    axios
+    .delete(`http://localhost:5000/api/movies/${props.movie.id}`)
+    // make a PUT request to edit the item
+    .then(res => {setRefresh(true)
+    // {
+    //   props.setMovieList(res.data);
+    //   push('/')
+    // }
+    })
+    .catch(err=>console.log(err))
+  };
+
   return (
     <div className="movie-card">
       <h2>{title}</h2>
+      <button
+        className="md-button"
+        onClick={() => push(`/update-movie/${props.movie.id}`)}
+      >Edit Movie</button>
+      <button onClick= {handleDelete}>Delete</button>
       <div className="movie-director">
         Director: <em>{director}</em>
       </div>
