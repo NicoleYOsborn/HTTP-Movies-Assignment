@@ -6,7 +6,7 @@ const MovieCard = props => {
   const { push } = useHistory();
   const { title, director, metascore, stars } = props.movie;
   // const { setMovieList} = props.setMovieList;
-  const { setRefresh } = props.setRefresh;
+  
 
   const handleDelete = e => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const MovieCard = props => {
     // make a PUT request to edit the item
     .then(res => {
       console.log(res)
-      setRefresh(true)
+      
     // {
     //   props.setMovieList(res.data);
     //   push('/')

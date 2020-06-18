@@ -6,7 +6,7 @@ import MovieCard from "./MovieCard";
 function Movie(props) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
-  const {setRefresh} = setRefresh;
+
 
   const fetchMovie = (id) => {
     axios
@@ -29,7 +29,7 @@ function Movie(props) {
 
   return (
     <div className="save-wrapper">
-      <MovieCard movie={movie} setRefresh = {setRefresh} />
+      <MovieCard movie={movie}  />
 
       <div className="save-button" onClick={saveMovie}>
         Save
